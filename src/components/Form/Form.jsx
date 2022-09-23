@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -31,9 +31,9 @@ export class FormPhone extends React.Component {
         
       
     };
-    static propTypes = {
-        onSubmit: PropTypes.func.isRequired,
-      };
+    // static propTypes = {
+    //     onSubmit: PropTypes.func.isRequired,
+    //   };
    
     
       render() {
