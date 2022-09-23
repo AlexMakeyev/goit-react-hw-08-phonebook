@@ -52,7 +52,7 @@ export class FormPhone extends React.Component {
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
-                        placeholder="Name" 
+                        placeholder="Please enter name" 
                         autocomplete="off"
                         />
                         <Error component="div" name="name" />
@@ -66,7 +66,8 @@ export class FormPhone extends React.Component {
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
-                        placeholder="Number" autocomplete="off"
+                        placeholder="Please enter number" 
+                        autocomplete="off"
                         />
                         <Error component="div" name="number" />
                 </LabelPhone>
