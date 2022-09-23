@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "./Form/Form";
+import { FormPhone } from "./Form/Form";
 import { Contacts } from "./Contacts/Contacts";
 import Filter from "./Filter/Filter";
 
@@ -49,7 +49,7 @@ export class App extends React.Component {
 
     return (<div>
       <h1>Phonebook</h1>
-      <Form submit ={this.submitHandler} />
+      <FormPhone submit ={this.submitHandler} />
       <h2>Contacts</h2>
       <Filter value={this.state.filter} onChange={this.onChangeFilter} />
       <Contacts  contacts={this.returnFilteredContacts()}
@@ -61,3 +61,4 @@ export class App extends React.Component {
       </div>)
   }
 };
+//Контакты contacts={this.returnFilteredContacts()}
