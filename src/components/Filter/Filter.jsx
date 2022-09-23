@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {FilterList, FilterTitle, FilterInput} from './Filter.styled';
 
 const Filter = ({ value, onChange }) => {
   return (
-    <>
-      <p>Find contact by name</p>
-      <input
+    <FilterList>
+      <FilterTitle>Find contact by name</FilterTitle>
+      <FilterInput
         type="text"
         name="filter"
         value={value}
         onChange={onChange}
-      ></input>
-    </>
+      ></FilterInput>
+    </FilterList>
   );
 };
 

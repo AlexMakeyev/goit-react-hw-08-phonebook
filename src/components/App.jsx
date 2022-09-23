@@ -2,6 +2,7 @@ import React from "react";
 import { FormPhone } from "./Form/Form";
 import { Contacts } from "./Contacts/Contacts";
 import Filter from "./Filter/Filter";
+import {AppStyled, Title, SubTitle} from "./App.styled";
 
 export class App extends React.Component {
   state = {
@@ -58,10 +59,10 @@ export class App extends React.Component {
 
   render() {
 
-    return (<div>
-      <h1>Phonebook</h1>
+    return (<AppStyled>
+      <Title>Phonebook</Title>
       <FormPhone submit ={this.submitHandler} />
-      <h2>Contacts</h2>
+      <SubTitle>Contacts</SubTitle>
       <Filter value={this.state.filter} onChange={this.onChangeFilter} />
       <Contacts  contacts={this.returnFilteredContacts()}
           onDelete={this.deleteContact} />
@@ -69,7 +70,7 @@ export class App extends React.Component {
 
 
 
-      </div>)
+      </AppStyled>)
   }
 };
 //Контакты contacts={this.returnFilteredContacts()}
