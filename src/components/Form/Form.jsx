@@ -6,10 +6,11 @@ import {
   LabelName,
   LabelPhone,
   ContactsForm,
-  Error,
   AddButton,
 } from './Form.styled';
-import { nanoid } from 'nanoid';
+// import { ErrorMessage } from 'formik/dist';
+// import { ErrorMessage } from 'formik/dist';
+// import { nanoid } from 'nanoid';
 // import * as yup from 'yup';
 // import { Formik } from 'formik';
 
@@ -37,17 +38,25 @@ export const Form = ({ onSubmit }) => {
         return;
     }
   };
+  const validateForm = data => {
+    const isValid = !!data.name && !!data.number;
+    return isValid;
+  };
 
   const onSubmitForm = event => {
-    const id = nanoid(10);
+    event.preventDefault();
     const contact = {
-      id,
       name,
       number,
     };
-    event.preventDefault();
-    onSubmit(contact);
-    reset();
+    const isValid = validateForm(contact);
+
+    if (isValid) {
+      onSubmit(contact);
+      reset();
+    } else {
+      return console.log('error data');
+    }
   };
   const reset = () => {
     setName('');

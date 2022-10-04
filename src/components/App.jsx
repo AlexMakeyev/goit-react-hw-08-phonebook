@@ -1,80 +1,84 @@
-import React from "react";
-// import { FormPhone } from "./Form/Form";
-import {Form} from "./Form/Form"
-import { Contacts } from "./Contacts/Contacts";
-import Filter from "./Filter/Filter";
-import {AppStyled, Title, SubTitle} from "./App.styled";
 
-export class App extends React.Component {
-  state = {
-    contacts: [],
-    filter: '',
-    
-  };
+import { Form } from './Form/Form';
+import { Contacts } from './Contacts/Contacts';
+import Filter from './Filter/Filter';
+import { AppStyled, Title, SubTitle } from './App.styled';
+import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
+export const App = () => {
+  
+  const [contacts, setContacts] = useState(() => {
+    const value = JSON.parse(localStorage.getItem("contacts"));
+    return value ?? [];
+  });
+  const [filter, setFilter] = useState('');
 
-  submitHandler = data =>{
-    this.setState(({ contacts }) => {
-      if (!this.haveDuplicates(contacts, data)) {
-        return { contacts: [data, ...contacts] };
-      } else {
-        alert(`${data.name} is already in contacts`);
-      }
+
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("contacts");
+    }
+  }, [])
+
+  const addContact = contact => {
+    if (haveDuplicates(contact)) {
+      return alert(`${contact.name} is already in contacts`);
+    }
+    setContacts((prev) => {
+      const newContact = {
+        id: nanoid(10),
+        ...contact,
+      };
+      return [...prev, newContact];
     });
   };
-  haveDuplicates = (contacts, data) => {
-    return contacts.some(contact => contact.name === data.name);
+
+  const deleteContact = (id) => {
+    const newContacts = contacts.filter((item) => item.id !== id);
+      return setContacts(newContacts);
   };
-  deleteContact = id => {
-    const filteredContacts = this.state.contacts.filter(
-      contact => contact.id !== id
+  
+
+
+
+  const haveDuplicates = ({ name, number }) => {
+    const result = contacts.some(
+      contact => contact.name === name && contact.number === number
     );
-    this.setState(() => {
-      return { contacts: filteredContacts };
-    });
+    return result;
   };
 
-  onChangeFilter = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
+  const onChangeFilter = event => {
+    const { value } = event.target;
+    setFilter(value);
   };
 
-  returnFilteredContacts() {
-    const normalizedFilter = this.state.filter.toLowerCase();
-    const visibleContacts = this.state.contacts.filter(contact =>
+  const getFilteredContacts = () => {
+    if (!filter) {
+      return contacts;
+    }
+
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
     return visibleContacts;
   };
-  componentDidMount () {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-    console.log(parsedContacts);
-    if (parsedContacts) {
-      this.setState ({contacts: parsedContacts});
-    }
-  }
-  componentDidUpdate (prevProps, prevState) {
-    if(this.state.contacts !== prevState) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    }
+  const filteredContacts = getFilteredContacts();
 
-  }
-
-
-  render() {
-
-    return (<AppStyled>
+  return (
+    <AppStyled>
       <Title>Phonebook</Title>
-      <Form submit ={this.submitHandler} />
+      <Form onSubmit={addContact} />
       <SubTitle>Contacts</SubTitle>
-      <Filter value={this.state.filter} onChange={this.onChangeFilter} />
-      <Contacts  contacts={this.returnFilteredContacts()}
-          onDelete={this.deleteContact} />
-      
-
-
-
-      </AppStyled>)
-  }
+      <Filter  value={filter} onChange={onChangeFilter} />
+      <Contacts contacts={filteredContacts} onDelete={deleteContact} />
+    </AppStyled>
+  );
 };
-//Контакты contacts={this.returnFilteredContacts()}
+
