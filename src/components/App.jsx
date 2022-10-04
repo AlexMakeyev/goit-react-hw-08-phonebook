@@ -1,5 +1,6 @@
 import React from "react";
-import { FormPhone } from "./Form/Form";
+// import { FormPhone } from "./Form/Form";
+import {Form} from "./Form/Form"
 import { Contacts } from "./Contacts/Contacts";
 import Filter from "./Filter/Filter";
 import {AppStyled, Title, SubTitle} from "./App.styled";
@@ -64,7 +65,7 @@ export class App extends React.Component {
 
     return (<AppStyled>
       <Title>Phonebook</Title>
-      <FormPhone submit ={this.submitHandler} />
+      <Form submit ={this.submitHandler} />
       <SubTitle>Contacts</SubTitle>
       <Filter value={this.state.filter} onChange={this.onChangeFilter} />
       <Contacts  contacts={this.returnFilteredContacts()}
