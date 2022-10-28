@@ -24,16 +24,16 @@ export const Contacts = ({ items }) => {
   });
   return <ContactList>{elements}</ContactList>;
 };
-// Contacts.propTypes = {
-//   items: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//       id: PropTypes.string.isRequired,
-//     })
-//   ),
-//   deleteContact: PropTypes.func.isRequired,
-// };
+Contacts.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  ),
+  deleteContact: PropTypes.func.isRequired,
+};
 //   return (
 //     <ContactList>
 //       {contacts.map(({ name, number, id }) => (
