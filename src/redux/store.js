@@ -17,6 +17,7 @@ import contactsReducer from './contacts/contacts-reducer';
 const contactsPersistConfig = {
         key: 'root',
         storage,
+        blacklist: ['filter']
     }
 
 
@@ -24,7 +25,7 @@ const persistedConatctsReducer = persistReducer(contactsPersistConfig, contactsR
 
 export const store = configureStore({
     reducer: {
-        books: persistedConatctsReducer,
+        contacts: persistedConatctsReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

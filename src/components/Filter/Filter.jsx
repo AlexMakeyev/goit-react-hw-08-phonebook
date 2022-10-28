@@ -1,15 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {FilterList, FilterTitle, FilterInput} from './Filter.styled';
 
-const Filter = ({ value, onChange }) => {
+import PropTypes from 'prop-types';
+import { FilterList, FilterTitle, FilterInput } from './Filter.styled';
+
+const Filter = ({ filter, onChange }) => {
   return (
     <FilterList>
       <FilterTitle>Find contact by name</FilterTitle>
       <FilterInput
         type="text"
         name="filter"
-        value={value}
+        value={filter}
         onChange={onChange}
       ></FilterInput>
     </FilterList>
@@ -19,6 +20,6 @@ const Filter = ({ value, onChange }) => {
 export default Filter;
 
 Filter.propTypes = {
-  value: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
