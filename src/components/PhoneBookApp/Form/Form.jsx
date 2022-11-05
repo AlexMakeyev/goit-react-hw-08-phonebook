@@ -1,6 +1,9 @@
 // import React from "react";
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/operations';
+import { nanoid } from 'nanoid';
 import {
   Input,
   LabelName,
@@ -8,22 +11,18 @@ import {
   ContactsForm,
   AddButton,
 } from './Form.styled';
-// import { ErrorMessage } from 'formik/dist';
-// import { ErrorMessage } from 'formik/dist';
-// import { nanoid } from 'nanoid';
-// import * as yup from 'yup';
-// import { Formik } from 'formik';
 
-export const Form = ({ onSubmit }) => {
+export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
-  // const onChangeInputName = event => {
-  //   setName(event.currentTarget.value);
-  // };
-  // const onChangeInputNumber = event => {
-  //   setNumber(event.currentTarget.value);
-  // };
+  const onAddContact = contact => {
+    const action = addContact(contact);
+    dispatch(action);
+  };
+  const nameId = nanoid();
+  const numberId = nanoid();
 
   const onInputChange = event => {
     const { name, value } = event.target;
@@ -38,34 +37,17 @@ export const Form = ({ onSubmit }) => {
         return;
     }
   };
-  const validateForm = data => {
-    const isValid = !!data.name && !!data.number;
-    return isValid;
-  };
 
   const onSubmitForm = event => {
     event.preventDefault();
-    const contact = {
-      name,
-      number,
-    };
-    const isValid = validateForm(contact);
-
-    if (isValid) {
-      onSubmit(contact);
-      reset();
-    } else {
-      return console.log('error data');
-    }
-  };
-  const reset = () => {
+    onAddContact({ name, number });
     setName('');
     setNumber('');
   };
 
   return (
     <ContactsForm onSubmit={onSubmitForm}>
-      <LabelName>
+      <LabelName htmlFor={nameId}>
         Name:
         <Input
           type="text"
@@ -77,7 +59,7 @@ export const Form = ({ onSubmit }) => {
           onChange={onInputChange}
         />
       </LabelName>
-      <LabelPhone>
+      <LabelPhone htmlFor={numberId}>
         Number:
         <Input
           type="tel"
