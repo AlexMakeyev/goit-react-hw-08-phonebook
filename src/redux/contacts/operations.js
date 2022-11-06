@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../api/Api';
+import * as api from '../../shared/api/Api';
 
 const haveDuplicates = ({ name, number }, contacts) => {
     const result = contacts.some(

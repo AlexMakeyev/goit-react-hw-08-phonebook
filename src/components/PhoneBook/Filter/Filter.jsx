@@ -1,5 +1,5 @@
 import React from 'react';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/filter/filterSlice';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 // import PropTypes from 'prop-types';
