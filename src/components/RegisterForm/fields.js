@@ -3,7 +3,7 @@ const fields = {
         label: "User name",
         name: "name",
         type: "text",
-        placeholder: "Enter user name",
+        placeholder: "Enter full user name",
         required: true,
     },
     email: {
@@ -17,7 +17,7 @@ const fields = {
         label: "User password",
         name: "password",
         type: "password",
-        placeholder: "Enter user password (min 6 symbols)",
+        placeholder: "Enter user password (min 8 symbols)",
         required: true,
     }
 }

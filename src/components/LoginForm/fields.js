@@ -10,7 +10,7 @@ const fields = {
         label: "User password",
         name: "password",
         type: "password",
-        placeholder: "Enter user password (min 6 symbols)",
+        placeholder: "Enter user password (min 8 symbols)",
         required: true,
     }
 }

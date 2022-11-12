@@ -4,7 +4,7 @@ import { signup } from 'redux/auth/operations';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import fields from './fields';
-
+import Button from '@mui/material/Button';
 export default function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -73,7 +73,9 @@ export default function RegisterForm() {
             {...fields.password}
           />
         </label>
-        <button type="submit">Register</button>
+        <Button variant="contained" type="submit">
+          Register
+        </Button>
       </form>
     </div>
   );

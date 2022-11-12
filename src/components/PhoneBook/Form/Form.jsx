@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { nanoid } from 'nanoid';
-import {
-  Input,
-  LabelName,
-  LabelPhone,
-  ContactsForm,
-  AddButton,
-} from './Form.styled';
+import { Input, LabelName, LabelPhone, ContactsForm } from './Form.styled';
+import Button from '@mui/material/Button';
 
 export const Form = () => {
   const [name, setName] = useState('');
@@ -70,7 +65,9 @@ export const Form = () => {
           onChange={onInputChange}
         />
       </LabelPhone>
-      <AddButton type="submit">Add contact</AddButton>
+      <Button variant="contained" type="submit">
+        Add contact
+      </Button>
     </ContactsForm>
   );
 };
