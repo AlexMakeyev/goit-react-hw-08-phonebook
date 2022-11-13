@@ -2,21 +2,23 @@ import styled from '@emotion/styled';
 
 export const AppStyled = styled.div`
   display: flex;
-  height: 100vh;
-  flex-direction: column;
-  padding: 15px;
 
-  background-color: #ede7f6;
+  height: 100vh;
+  // background-color: #cfe8fc;
+
+  padding: 15px;
 `;
 export const Title = styled.h1`
-  margin-left: 160px;
-  font-size: 50px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 30px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
 `;
 export const SubTitle = styled.h2`
-  margin-top: 40px;
-  margin-left: 160px;
+  margin-bottom: 0;
+  margin-left: 150px;
+  text-align: center;
   font-weight: bold;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;

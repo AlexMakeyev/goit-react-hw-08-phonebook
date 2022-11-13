@@ -4,6 +4,9 @@ import { login } from 'redux/auth/operations';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import fields from './fields';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { Form, Label, Container } from './LoginForm.styled';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -38,28 +41,29 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitForm}>
-        <label htmlFor={emailId}>
-          Email:
-          <input
+    <Container>
+      <Form onSubmit={onSubmitForm}>
+        <Label htmlFor={emailId}>
+          <TextField
             id={emailId}
             value={email}
             onChange={onInputChange}
             {...fields.email}
           />
-        </label>
-        <label htmlFor={passwordId}>
-          Password:
-          <input
+        </Label>
+        <Label htmlFor={passwordId}>
+          <TextField
+            variant="outlined"
             id={passwordId}
             value={password}
             onChange={onInputChange}
             {...fields.password}
           />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+        </Label>
+        <Button variant="contained" type="submit">
+          Login
+        </Button>
+      </Form>
+    </Container>
   );
 }

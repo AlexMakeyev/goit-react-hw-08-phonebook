@@ -21,13 +21,17 @@ export const PhoneBook = () => {
 
   return (
     <AppStyled>
-      <Title>Phonebook</Title>
-      <Form />
-      <SubTitle>Contacts</SubTitle>
-      <Filter filter={filter} />
-      <Contacts items={contacts} />
-      {isLoading && <p>...loading</p>}
-      {error && <p>oops, something went wrong</p>}
+      <div>
+        <Title>Phonebook</Title>
+        <Form />
+      </div>
+      <div>
+        <SubTitle>Contacts</SubTitle>
+        <Filter filter={filter} />
+        <Contacts items={contacts} />
+        {isLoading && <p>...loading</p>}
+        {error && <p>oops, something went wrong</p>}
+      </div>
     </AppStyled>
   );
 };

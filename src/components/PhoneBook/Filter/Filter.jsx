@@ -2,8 +2,9 @@ import React from 'react';
 import { setFilter } from 'redux/filter/filterSlice';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
 // import PropTypes from 'prop-types';
-import { FilterList, FilterTitle, FilterInput } from './Filter.styled';
+import { FilterList, FilterTitle } from './Filter.styled';
 
 const Filter = ({ filter }) => {
   const dispatch = useDispatch();
@@ -16,12 +17,13 @@ const Filter = ({ filter }) => {
   return (
     <FilterList>
       <FilterTitle htmlFor={filterID}>Find contact by name</FilterTitle>
-      <FilterInput
+      <TextField
+        variant="outlined"
         type="text"
         name="filter"
         value={filter}
         onChange={onChangeFilter}
-      ></FilterInput>
+      ></TextField>
     </FilterList>
   );
 };

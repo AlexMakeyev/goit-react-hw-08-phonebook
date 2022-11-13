@@ -2,22 +2,19 @@ import styled from '@emotion/styled';
 export const ContactList = styled.ul`
 list-style: none;
 margin top: 40px;
+margin-left: 160px;
 padding: 0;
 display: flex;
 flex-direction: column;
 flexwrap: wrap;
 justify-content: center;
-align-items: center;
+align-items: start;
 
 `;
 export const Item = styled.li`
-  margin-right: 20px;
-  & :last-child {
-    margin-right: 0;
-  }
+  margin-top: 20px;
   font-size: 15px;
   font-weight: bold;
-  font-family: 'Helvetica Neue', sans serif;
 `;
 export const DeleteButton = styled.button`
   margin-left: 20px;

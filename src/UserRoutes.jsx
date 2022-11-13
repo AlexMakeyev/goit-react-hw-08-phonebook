@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'components/PivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
+import CircularProgress from '@mui/material/CircularProgress';
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const MyPhonebookPage = lazy(() =>
@@ -11,12 +13,12 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 const UserRoutes = () => {
   return (
-    <Suspense fallback={<p>...Load page</p>}>
+    <Suspense fallback={<CircularProgress />}>
       <Routes>
-        <Route element={<PublicRoute />}>
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Route>
+        <Route element={<PublicRoute />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/contacts" element={<MyPhonebookPage />} />

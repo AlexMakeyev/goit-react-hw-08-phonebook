@@ -57,7 +57,8 @@ export const current = createAsyncThunk(
                 if (!persistedToken) {
                 return rejectWithValue();
                 }
-            const result = await api.getCurrentUser(auth.token);
+            const result = await api.getCurrentUser(persistedToken);
+            console.log(result);
             return result;
         } catch ({response}) {
             const error = {

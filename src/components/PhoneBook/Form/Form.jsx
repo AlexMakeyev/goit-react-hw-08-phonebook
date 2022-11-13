@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { nanoid } from 'nanoid';
-import { Input, LabelName, LabelPhone, ContactsForm } from './Form.styled';
+import { LabelName, LabelPhone, ContactsForm, Container } from './Form.styled';
 import Button from '@mui/material/Button';
-
+import TextField from '@mui/material/TextField';
 export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -40,35 +40,39 @@ export const Form = () => {
   };
 
   return (
-    <ContactsForm onSubmit={onSubmitForm}>
-      <LabelName htmlFor={nameId}>
-        Name:
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={onInputChange}
-        />
-      </LabelName>
-      <LabelPhone htmlFor={numberId}>
-        Number:
-        <Input
-          type="tel"
-          name="number"
-          value={number}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          onChange={onInputChange}
-        />
-      </LabelPhone>
-      <Button variant="contained" type="submit">
-        Add contact
-      </Button>
-    </ContactsForm>
+    <Container>
+      <ContactsForm onSubmit={onSubmitForm}>
+        <LabelName htmlFor={nameId}>
+          Name:
+          <TextField
+            variant="outlined"
+            type="text"
+            name="name"
+            value={name}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            onChange={onInputChange}
+          />
+        </LabelName>
+        <LabelPhone htmlFor={numberId}>
+          Number:
+          <TextField
+            variant="outlined"
+            type="tel"
+            name="number"
+            value={number}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            onChange={onInputChange}
+          />
+        </LabelPhone>
+        <Button variant="contained" type="submit">
+          Add contact
+        </Button>
+      </ContactsForm>
+    </Container>
   );
 };
 

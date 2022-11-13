@@ -3,7 +3,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 // import { ContactsItem } from 'components/ContactsItem/ContactsItem';
-import { ContactList, Item, DeleteButton } from './Contacts.styled';
+import { ContactList, Item } from './Contacts.styled';
+import { FaTimes } from 'react-icons/fa';
+import IconButton from '@mui/material/IconButton';
+
 export const Contacts = ({ items }) => {
   const dispatch = useDispatch();
 
@@ -16,9 +19,19 @@ export const Contacts = ({ items }) => {
     return (
       <Item key={id}>
         {name}: {number}{' '}
-        <DeleteButton type="submit" onClick={() => onDeleteContact(id)}>
+        {/* <DeleteButton type="submit" onClick={() => onDeleteContact(id)}>
           Delete
-        </DeleteButton>
+        </DeleteButton> */}
+        <IconButton
+          size="small"
+          edge="start"
+          color="inherit"
+          aria-label="logout"
+          sx={{ mr: 2 }}
+          onClick={() => onDeleteContact(id)}
+        >
+          <FaTimes />
+        </IconButton>
       </Item>
     );
   });

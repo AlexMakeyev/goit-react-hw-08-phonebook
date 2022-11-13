@@ -4,7 +4,10 @@ import { signup } from 'redux/auth/operations';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import fields from './fields';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Form, Label, Container } from './RegisterForm.styled';
+
 export default function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -44,39 +47,39 @@ export default function RegisterForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitForm}>
-        <label htmlFor={nameId}>
-          Name:
-          <input
+    <Container>
+      <Form onSubmit={onSubmitForm}>
+        <Label htmlFor={nameId}>
+          <TextField
+            variant="outlined"
             id={nameId}
             value={name}
             onChange={onInputChange}
             {...fields.name}
           />
-        </label>
-        <label htmlFor={emailId}>
-          Email:
-          <input
+        </Label>
+        <Label htmlFor={emailId}>
+          <TextField
+            variant="outlined"
             id={emailId}
             value={email}
             onChange={onInputChange}
             {...fields.email}
           />
-        </label>
-        <label htmlFor={passwordId}>
-          Password:
-          <input
+        </Label>
+        <Label htmlFor={passwordId}>
+          <TextField
+            variant="outlined"
             id={passwordId}
             value={password}
             onChange={onInputChange}
             {...fields.password}
           />
-        </label>
+        </Label>
         <Button variant="contained" type="submit">
           Register
         </Button>
-      </form>
-    </div>
+      </Form>
+    </Container>
   );
 }

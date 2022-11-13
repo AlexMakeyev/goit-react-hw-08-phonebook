@@ -5,7 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
+import { FaBlenderPhone } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useAuth from 'shared/hooks/useAuth';
 import ButtonAppBarUser from 'components/ButtonAppBar/ButtonAppBarUser';
@@ -17,7 +18,10 @@ export default function ButtonAppBar() {
   const signIn = () => navigate(toSignIn);
   const toLogIn = location.state?.from ?? '/login';
   const logIn = () => navigate(toLogIn);
+  const goHome = location.state?.from ?? '/';
+  const goBack = () => navigate(goHome);
   const isLogin = useAuth();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -28,8 +32,9 @@ export default function ButtonAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={goBack}
           >
-            <MenuIcon />
+            <FaBlenderPhone />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PhoneBook
