@@ -3,6 +3,7 @@ import { current } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getLoadingUserStatus } from 'redux/auth/authSelector';
+import ButtonAppBar from 'components/ButtonAppBar/ButtonAppBar';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const App = () => {
         <p>Loading ...</p>
       ) : (
         <>
+          <ButtonAppBar />
           <UserRoutes />
         </>
       )}

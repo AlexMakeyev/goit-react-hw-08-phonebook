@@ -5,7 +5,8 @@ import Button from '@mui/material/Button';
 
 export default function ButtonAppBarUser() {
   const dispatch = useDispatch();
-  const { name } = useSelector(getUser);
+  const user = useSelector(getUser);
+  console.log(user.name);
 
   const onLogout = () => {
     dispatch(logout());
@@ -13,7 +14,7 @@ export default function ButtonAppBarUser() {
 
   return (
     <div>
-      {`Welcome, ${name}`}{' '}
+      {`Welcome, ${user.name}`}{' '}
       <Button onClick={onLogout} color="inherit">
         Logout
       </Button>
