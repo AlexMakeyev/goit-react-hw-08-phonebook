@@ -16,7 +16,7 @@ const UserRoutes = () => {
     <Suspense fallback={<CircularProgress />}>
       <Routes>
         <Route element={<PublicRoute />} />
-        <Route path="/" element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
 
